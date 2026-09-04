@@ -1,10 +1,33 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GRS → PDF</title><link rel="stylesheet" href="./app.css"></head>
-<body><main><div class="eyebrow">STANDALONE • BROWSER ONLY</div><h1>GRS → PDF</h1>
-<p>Your GRS file stays on your device.</p>
-<div id="drop" class="drop" tabindex="0"><input id="file" type="file" accept=".grs" hidden>
-<strong>Drop a .GRS file here</strong><br><small>or click to choose</small></div>
-<div class="buttons"><button id="inspect" disabled>Inspect GRS</button><button id="pdf" disabled>Generate test PDF</button></div>
-<section><h2>Diagnostics</h2><pre id="output">Waiting for a GRS file…</pre></section>
-</main><script type="module" src="./src/main.js"></script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GRS → PDF</title><link rel="stylesheet" href="./app.css">
+</head>
+<body>
+<main>
+  <div class="eyebrow">STANDALONE • BROWSER ONLY</div>
+  <h1>GRS → PDF</h1>
+  <p>Choose a .GRS file. It is read locally in your browser; nothing is uploaded.</p>
+
+  <section class="picker">
+    <label class="choose" for="file">Choose GRS file</label>
+    <input id="file" type="file" accept=".grs,.GRS,application/octet-stream">
+    <div id="filename" class="filename">No file selected</div>
+  </section>
+
+  <div id="drop" class="drop" tabindex="0" role="button" aria-label="Drop a GRS file here or press Enter to choose one">
+    <strong>Drop a .GRS file here</strong><br><small>or use the button above</small>
+  </div>
+
+  <div class="buttons">
+    <button id="inspect" disabled>Inspect GRS</button>
+    <button id="pdf" disabled>Generate test PDF</button>
+  </div>
+
+  <section><h2>Diagnostics</h2><pre id="output">Waiting for a GRS file…</pre></section>
+</main>
+<script type="module" src="./src/main.js"></script>
+<noscript><p class="error">JavaScript is required for the browser-only converter.</p></noscript>
+</body>
+</html>

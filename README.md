@@ -1,28 +1,19 @@
-# GRS to PDF — Browser-only
+# GRS → PDF (browser-only reverse-engineering build)
 
-Standalone GitHub Pages starter for investigating and eventually converting Esko/Barco `.GRS` files entirely in the browser.
+This build reads `.GRS` files locally in the browser. There is no upload server.
 
-Current version:
-- local `.GRS` file selection/drag-drop
-- binary/header inspection
-- PackEdge producer/version detection
-- browser-side diagnostics
-- browser-side test PDF generation
-- no backend and no file upload
-- GitHub Pages workflow
+## Current state
 
-The proprietary GRS object format is not publicly documented as a complete binary specification, so the real converter must be developed incrementally and validated against real GRS/PDF pairs.
+- Native file chooser is visible and works without drag/drop.
+- Drag/drop is also supported.
+- `Inspect GRS` reports header bytes, producer/version strings, and printable runs.
+- `Generate test PDF` only proves browser-side PDF creation. It is **not** a GRS renderer yet.
 
-Roadmap:
-1. Decode record boundaries.
-2. Decode page/group/style records.
-3. Decode paths and transformations.
-4. Decode text/fonts.
-5. Decode CT/LP/image references.
-6. Build a scene graph.
-7. Render SVG.
-8. Emit real PDF.
-9. Regression-test against supplied GRS/PDF pairs.
+## Current test corpus
 
-## Deploy
-Create an empty GitHub repository and upload this directory's contents to its root. Then use Settings → Pages → Source: GitHub Actions.
+Two GRS files are available for reverse engineering:
+
+- `logos.grs`: 73,792 bytes; header contains `3.1 NT Jun 16 2001`
+- `1.grs`: 118,473 bytes; contains `Esko PackEdge 23.03 NT Mar 15 2023`
+
+A real renderer should be implemented only after object records are decoded and validated against known PDF output.
